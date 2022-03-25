@@ -11,7 +11,7 @@ class HomePage extends StatelessWidget {
         title: const Text('Productos'),
       ),
       body: ListView.builder(
-          itemCount: 10,
+          itemCount: 1,
           itemBuilder: (BuildContext context, int index) => GestureDetector(
               onTap: () => Navigator.pushNamed(context, 'product'),
               child: const ProductCard())),
