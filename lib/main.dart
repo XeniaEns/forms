@@ -10,7 +10,7 @@ class MyForms extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      initialRoute: 'login',
+      initialRoute: 'home',
       routes: {
         'login': (_) => const LoginScreen(),
         'home': (_) => const HomePage(),
