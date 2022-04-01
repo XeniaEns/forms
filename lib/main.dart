@@ -1,8 +1,26 @@
 import 'package:flutter/material.dart';
-import 'package:forms/screens/product_screen.dart';
 import 'package:forms/screens/screens.dart';
+import 'package:provider/provider.dart';
+import 'services/services.dart';
 
-void main() => runApp(const MyForms());
+void main() => runApp(const AppState());
+
+class AppState extends StatelessWidget {
+  const AppState({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return MultiProvider(
+      // Los providers gestionan los servicios
+      providers: [
+        ChangeNotifierProvider(
+          create: (_) => ProductsService(),
+        ),
+      ],
+      child: const MyForms(),
+    );
+  }
+}
 
 class MyForms extends StatelessWidget {
   const MyForms({Key? key}) : super(key: key);
