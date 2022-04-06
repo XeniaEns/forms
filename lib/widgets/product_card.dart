@@ -18,7 +18,7 @@ class ProductCard extends StatelessWidget {
         child: Stack(
           alignment: Alignment.bottomLeft,
           children: [
-            _BackgroundImage(rutaImg: product.imagen!),
+            _BackgroundImage(rutaImg: product.imagen),
             _ProductDetails(
               label: product.nombre,
               subLabel: product.id!,
@@ -159,11 +159,10 @@ class _ProductDetails extends StatelessWidget {
 }
 
 class _BackgroundImage extends StatelessWidget {
-  final String rutaImg;
+  final String? rutaImg;
   const _BackgroundImage({
-    Key? key,
-    required this.rutaImg,
-  }) : super(key: key);
+    this.rutaImg,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -172,11 +171,16 @@ class _BackgroundImage extends StatelessWidget {
       child: SizedBox(
           width: double.infinity,
           height: 400,
-          child: FadeInImage(
-            placeholder: const AssetImage('assets/cargar.gif'),
-            image: NetworkImage(rutaImg),
-            fit: BoxFit.cover,
-          )),
+          child: rutaImg == null
+              ? const Image(
+                  image: AssetImage('assets/no-image.png'),
+                  fit: BoxFit.cover,
+                )
+              : FadeInImage(
+                  placeholder: const AssetImage('assets/cargar.gif'),
+                  image: NetworkImage(rutaImg!),
+                  fit: BoxFit.cover,
+                )),
     );
   }
 }

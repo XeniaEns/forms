@@ -5,12 +5,12 @@
 import 'dart:convert';
 
 class Product {
-  Product({
-    required this.disponibilidad,
-    this.imagen,
-    required this.nombre,
-    required this.precio,
-  });
+  Product(
+      {required this.disponibilidad,
+      this.imagen,
+      required this.nombre,
+      required this.precio,
+      this.id});
 
   bool disponibilidad;
   String? imagen;
@@ -35,4 +35,12 @@ class Product {
         "nombre": nombre,
         "precio": precio,
       };
+
+  Product copia() => Product(
+        disponibilidad: disponibilidad,
+        imagen: imagen,
+        nombre: nombre,
+        precio: precio,
+        id: id,
+      );
 }

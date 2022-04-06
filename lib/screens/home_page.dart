@@ -20,7 +20,11 @@ class HomePage extends StatelessWidget {
       body: ListView.builder(
           itemCount: servicioProductos.productos.length,
           itemBuilder: (BuildContext context, int index) => GestureDetector(
-              onTap: () => Navigator.pushNamed(context, 'product'),
+              onTap: () => {
+                    servicioProductos.productoSeleccionado =
+                        servicioProductos.productos[index].copia(),
+                    Navigator.pushNamed(context, 'product')
+                  },
               child: ProductCard(product: servicioProductos.productos[index]))),
       floatingActionButton: FloatingActionButton(
         child: const Icon(Icons.add),

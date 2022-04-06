@@ -7,11 +7,12 @@ class ProductsService extends ChangeNotifier {
   // Este notifier se gestiona a través del Provider
   final String _baseUrl = 'mercadito-flutter-default-rtdb.firebaseio.com';
   final List<Product> productos = [];
+  late Product productoSeleccionado;
 
   bool isLoading = true;
 
   ProductsService() {
-    this.cargarProductos();
+    cargarProductos();
   }
 
   Future cargarProductos() async {
